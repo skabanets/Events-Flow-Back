@@ -5,6 +5,8 @@ import { createEventSchema } from '../schemas/eventsSchemas.js';
 
 export const eventsRouter = express.Router();
 
+eventsRouter.get('/', eventsControllers.getAllEvents);
+
 eventsRouter.post(
   '/',
   validateBody(createEventSchema),
