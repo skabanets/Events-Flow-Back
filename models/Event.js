@@ -1,26 +1,26 @@
-import { Schema } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const EventSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Title is required"],
+      required: [true, 'Title is required'],
     },
     description: {
       type: String,
-      required: [true, "Description is required"],
+      required: [true, 'Description is required'],
     },
     eventDate: {
       type: Date,
-      required: [true, "Event date is required"],
+      required: [true, 'Event date is required'],
     },
     organaizer: {
       type: String,
-      required: [true, "Organaizer is required"],
+      required: [true, 'Organaizer is required'],
     },
-    participants: [{ type: Schema.Types.ObjectId, ref: "Participant" }],
+    participants: [{ type: Schema.Types.ObjectId, ref: 'Participant' }],
   },
   { versionKey: false }
 );
 
-export const Event = model("Event", EventSchema);
+export const Event = model('Event', EventSchema);
