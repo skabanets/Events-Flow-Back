@@ -18,3 +18,5 @@ export const addEvent = async data => {
   const newEvent = await Event.create(data);
   return newEvent;
 };
+
+export const findEvent = async filter => Event.findOne(filter);
