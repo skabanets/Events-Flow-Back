@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import 'dotenv/config';
@@ -9,6 +10,12 @@ const { PORT = 3000, DB_URL } = process.env;
 export const app = express();
 
 app.use(morgan('tiny'));
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://events-flow.vercel.app'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use('/api/events', eventsRouter);
