@@ -1,0 +1,22 @@
+import { HttpError } from '../helpers/HttpError.js';
+import { ctrlWrapper } from '../helpers/ctrlWrapper.js';
+import { findEvent } from '../services/eventsServices.js';
+import { addParticipant } from '../services/participantsServices.js';
+
+const createParticipant = async (req, res) => {
+  const { eventId } = req.body;
+
+  const event = await findEvent({ _id: eventId });
+  if (!event) throw HttpError(404, 'Event not found');
+
+  const participant = await addParticipant({ ...req.body });
+
+  event.participants.push(participant._id);
+  await event.save();
+
+  res.status(201).json(participant);
+};
+
+export default {
+  createParticipant: ctrlWrapper(createParticipant),
+};

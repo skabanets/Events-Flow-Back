@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import { eventsRouter } from './routes/eventRouter.js';
+import { eventsRouter, participantRouter } from './routes/index.js';
 
 const { PORT = 3000, DB_URL } = process.env;
 
@@ -12,6 +12,7 @@ app.use(morgan('tiny'));
 app.use(express.json());
 
 app.use('/api/events', eventsRouter);
+app.use('/api/participants', participantRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: 'Route not found' });

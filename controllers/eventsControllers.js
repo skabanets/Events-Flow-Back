@@ -34,6 +34,6 @@ const createEvent = async (req, res) => {
 
 export default {
   getAllEvents: ctrlWrapper(getAllEvents),
-  getEvent: ctrlWrapper(getAllEvents),
+  getEvent: ctrlWrapper(getEvent),
   createEvent: ctrlWrapper(createEvent),
 };

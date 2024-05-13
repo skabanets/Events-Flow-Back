@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { emailRegexp } from '../constants/participant-constans';
+import { emailRegexp } from '../constants/participant-constants.js';
 
 const ParticipantSchema = new Schema(
   {
