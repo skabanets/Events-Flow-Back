@@ -1,6 +1,6 @@
 import express from 'express';
 import { validateBody } from '../middlewares/validateBody.js';
-import participantControllers from '../controllers/ParticipantControllers.js';
+import participantControllers from '../controllers/participantControllers.js';
 import { craeteParticipantSchema } from '../schemas/participantsShemas.js';
 
 export const participantRouter = express.Router();
