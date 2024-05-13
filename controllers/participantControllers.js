@@ -1,7 +1,18 @@
 import { HttpError } from '../helpers/HttpError.js';
 import { ctrlWrapper } from '../helpers/ctrlWrapper.js';
 import { findEvent } from '../services/eventsServices.js';
-import { addParticipant } from '../services/participantsServices.js';
+import {
+  addParticipant,
+  getParticipants,
+} from '../services/participantsServices.js';
+
+const getAllParticipants = async (req, res) => {
+  const { eventId } = req.body;
+
+  const result = await getParticipants({ eventId });
+
+  res.json(result);
+};
 
 const createParticipant = async (req, res) => {
   const { eventId } = req.body;
@@ -18,5 +29,6 @@ const createParticipant = async (req, res) => {
 };
 
 export default {
+  getAllParticipants: ctrlWrapper(getAllParticipants),
   createParticipant: ctrlWrapper(createParticipant),
 };

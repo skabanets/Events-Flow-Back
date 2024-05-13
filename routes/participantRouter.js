@@ -5,6 +5,8 @@ import { craeteParticipantSchema } from '../schemas/participantsShemas.js';
 
 export const participantRouter = express.Router();
 
+participantRouter.get('/', participantControllers.getAllParticipants);
+
 participantRouter.post(
   '/',
   validateBody(craeteParticipantSchema),

@@ -1,6 +1,11 @@
 import { HttpError } from '../helpers/HttpError.js';
 import { ctrlWrapper } from '../helpers/ctrlWrapper.js';
-import { addEvent, findEvent, getEvents } from '../services/eventsServices.js';
+import {
+  addEvent,
+  findEvent,
+  getEventById,
+  getEvents,
+} from '../services/eventsServices.js';
 
 const getAllEvents = async (req, res) => {
   const { page = 1, limit = 12 } = req.body;
