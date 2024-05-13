@@ -15,12 +15,24 @@ const getAllParticipants = async (req, res) => {
 };
 
 const createParticipant = async (req, res) => {
-  const { eventId } = req.body;
+  const { email, eventId } = req.body;
 
   const event = await findEvent({ _id: eventId });
-  if (!event) throw HttpError(404, 'Event not found');
+  if (!event) throw HttpError(404, 'Event not found!');
 
-  const participant = await addParticipant({ ...req.body });
+  const participants = await getParticipants({ email });
+
+  const isExistParticipant = participants.find(
+    item => item.eventId.toString() === eventId
+  );
+
+  if (isExistParticipant)
+    throw HttpError(
+      404,
+      'The user with this email is already registered for this event!'
+    );
+
+  const participant = await addParticipant(req.body);
 
   event.participants.push(participant._id);
   await event.save();

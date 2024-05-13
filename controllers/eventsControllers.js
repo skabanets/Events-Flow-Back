@@ -32,7 +32,7 @@ const createEvent = async (req, res) => {
   if (isExist)
     throw HttpError(400, 'Event with same title has already created');
 
-  const result = await addEvent({ ...req.body });
+  const result = await addEvent(req.body);
 
   res.status(201).json(result);
 };
