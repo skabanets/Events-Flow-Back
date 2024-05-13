@@ -10,6 +10,14 @@ const getAllEvents = async (req, res) => {
   res.json(result);
 };
 
+const getEvent = async (req, res) => {
+  const { id } = req.params;
+
+  const result = await getEventById({ _id: id });
+
+  res.json(result);
+};
+
 const createEvent = async (req, res) => {
   const result = await addEvent({ ...req.body });
 
@@ -18,5 +26,6 @@ const createEvent = async (req, res) => {
 
 export default {
   getAllEvents: ctrlWrapper(getAllEvents),
+  getEvent: ctrlWrapper(getAllEvents),
   createEvent: ctrlWrapper(createEvent),
 };

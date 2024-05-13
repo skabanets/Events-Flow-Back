@@ -1,11 +1,16 @@
 import { Event } from '../models/Event.js';
 
 export const getEvents = async (query = {}) => {
-  const event = await Event.find(
+  const events = await Event.find(
     {},
     'title description eventDate organaizer participants',
     query
   );
+  return events;
+};
+
+export const getEventById = async eventId => {
+  const event = await Event.findById(eventId);
   return event;
 };
 
