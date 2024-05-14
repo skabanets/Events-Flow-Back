@@ -1,8 +1,8 @@
 import { Event } from '../models/Event.js';
 
-export const getEvents = async (filter = {}, query = {}) => {
+export const getEvents = async (query = {}) => {
   const events = await Event.find(
-    filter,
+    {},
     'title description eventDate organaizer participants',
     query
   );
