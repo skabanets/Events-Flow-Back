@@ -16,9 +16,9 @@ const ParticipantSchema = new Schema(
       type: Date,
       required: [true, 'Date of birth is required'],
     },
-    dateOfRegistrations: {
+    dateOfRegistration: {
       type: Date,
-      required: [true, 'Date of registrations is required'],
+      required: [true, 'Date of registration is required'],
     },
     eventSource: {
       type: String,

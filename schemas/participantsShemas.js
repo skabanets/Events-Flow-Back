@@ -12,8 +12,8 @@ export const craeteParticipantSchema = Joi.object({
   dateOfBirth: Joi.date().required().messages({
     'any.required': 'dateOfBirth is required',
   }),
-  dateOfRegistrations: Joi.date().required().messages({
-    'any.required': 'dateOfRegistrations is required',
+  dateOfRegistration: Joi.date().required().messages({
+    'any.required': 'dateOfRegistration is required',
   }),
   eventSource: Joi.string()
     .valid('Social media', 'Friends', 'Found myself')
