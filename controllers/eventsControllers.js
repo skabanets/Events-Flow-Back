@@ -8,10 +8,11 @@ import {
 } from '../services/eventsServices.js';
 
 const getAllEvents = async (req, res) => {
-  const { page = 1, limit = 12 } = req.body;
+  const { page = 1, limit = 12, q = '' } = req.query;
+  filter = q;
   const skip = (page - 1) * limit;
 
-  const result = await getEvents({ skip, limit });
+  const result = await getEvents({ ...filter }, { skip, limit });
 
   res.json(result);
 };
