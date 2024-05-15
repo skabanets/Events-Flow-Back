@@ -5,6 +5,7 @@ import {
   findEvent,
   getEventById,
   getEvents,
+  getTotalEvents,
 } from '../services/eventsServices.js';
 
 const getAllEvents = async (req, res) => {
@@ -13,7 +14,9 @@ const getAllEvents = async (req, res) => {
 
   const result = await getEvents({ skip, limit });
 
-  res.json(result);
+  const totalEvents = await getTotalEvents();
+
+  res.json({ events: result, totalEvents });
 };
 
 const getEvent = async (req, res) => {

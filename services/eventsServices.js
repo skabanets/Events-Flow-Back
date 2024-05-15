@@ -20,3 +20,5 @@ export const addEvent = async data => {
 };
 
 export const findEvent = async filter => Event.findOne(filter);
+
+export const getTotalEvents = async () => Event.countDocuments();
