@@ -7,9 +7,7 @@ import {
 } from '../services/participantsServices.js';
 
 const getAllParticipants = async (req, res) => {
-  const { eventId } = req.query;
-
-  const result = await getParticipants({ eventId });
+  const result = await getParticipants(req.query);
 
   res.json(result);
 };
