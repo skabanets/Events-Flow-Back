@@ -9,7 +9,8 @@ export const craeteParticipantSchema = Joi.object({
   email: Joi.string().pattern(emailRegexp).required().messages({
     'any.required': 'email is required',
   }),
-  dateOfBirth: Joi.date().required().messages({
+  dateOfBirth: Joi.date().max('now').required().messages({
+    'date.max': 'dateOfBirth cannot be in the future.',
     'any.required': 'dateOfBirth is required',
   }),
   dateOfRegistration: Joi.date().required().messages({
