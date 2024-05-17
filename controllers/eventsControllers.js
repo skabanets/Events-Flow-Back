@@ -5,18 +5,24 @@ import {
   findEvent,
   getEventById,
   getEvents,
-  getTotalEvents,
 } from '../services/eventsServices.js';
 
 const getAllEvents = async (req, res) => {
-  const { page = 1, limit = 12 } = req.query;
+  const { page = 1, limit = 12, ...sortingParams } = req.query;
   const skip = (page - 1) * limit;
 
-  const result = await getEvents({ skip, limit });
+  const sortingKeys = ['sortByTitle', 'sortByEventDate', 'sortByOrganaizer'];
+  const sortingKey = Object.keys(sortingParams).find(key =>
+    sortingKeys.includes(key)
+  );
 
-  const totalEvents = await getTotalEvents();
+  const { events, totalEvents } = await getEvents(
+    { skip, limit },
+    sortingParams,
+    sortingKey
+  );
 
-  res.json({ events: result, totalEvents });
+  res.json({ events, totalEvents });
 };
 
 const getEvent = async (req, res) => {
